@@ -5,13 +5,19 @@
     <title>Synchronized Slider</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>
+
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js"></script>></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.2/socket.io.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
-
             // sending a connect request to the server.
-            var socket = io.connect('http://localhost:8080');
-
+            var socket = io.connect(
+                'http://localhost:8080', {
+                    extraHeaders: {
+                        Authorization: "Bearer authorization_token_here"
+                    }
+                }
+            );
             // An event handler for a change of value 
             $('input.sync').on('input', function(event) {
                 socket.emit('Slider value changed', {who: $(this).attr('id'), data: $(this).val()});

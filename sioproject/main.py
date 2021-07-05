@@ -3,7 +3,7 @@ import requests
 import time
 import json
 import base64
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_socketio import SocketIO, emit
 
 from gauth import get_oauth_access_token
@@ -70,7 +70,9 @@ def index():
 @socketio.on('connect')
 def test_connect():
     print("first time")
+    print(request.headers)
     emit('after connect', {'data': 'Lets dance'})
+    return "ok"
 
 
 @socketio.on('Slider value changed')

@@ -1,10 +1,3 @@
-# websockets
-# google-cloud
-# google-cloud-pubsub
-# firebase-admin==5.0.0
-# aiohttp==3.5.4
-# aiohttp-socks==0.2.2
-# flask<2
 cryptography==3.4.7
 eventlet==0.30.2
 gunicorn==20.1.0
